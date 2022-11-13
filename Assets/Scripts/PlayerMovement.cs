@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public int speed;
     public int turnSpeed;
 
+    public GameObject gameManager;
+    //public GameObject gameManagerScript;
+
     float h, v;
 
     void Start()
@@ -37,4 +40,17 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Rotate(Vector3.up * turnSpeed * h * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ManaCoin"))
+        {
+            //To access GameManager to get AddCoin method
+            gameManager.GetComponent<GameManager>().AddCoin();
+            //gameManagerScript.AddCoin();
+
+            Destroy(other.gameObject);
+        }
+    }
 }
+
