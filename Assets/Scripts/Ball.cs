@@ -25,8 +25,8 @@ public class Ball : MonoBehaviour
     {
         if(collision.collider.CompareTag("Enemy"))
         {
-            GameObject cubeEnemy = collision.gameObject;
-            cubeEnemy.GetComponent<MeshRenderer>().material = mat;
+            GameObject enemySlime = collision.gameObject;
+            enemySlime.GetComponentInChildren<SkinnedMeshRenderer>().material = mat;
             Destroy (collision.gameObject, 0.3f);
         }
     }
